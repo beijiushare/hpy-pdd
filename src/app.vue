@@ -1,6 +1,7 @@
 <template>
-  <div class="app">
-    <div class="welcome">
+  <div class="app" @click="onPageHit" :style="{ background: appBackground }">
+    <!-- 这里的 click 事件处理器用于监听页面点击 -->
+    <div class="welcome" v-if="showwelcome">
       <h1>
         <span
           v-for="(char, index) in text"
@@ -11,34 +12,87 @@
       </h1>
     </div>
     <div class="card-container" v-if="showcard_container">
-      <card v-if="showcard"></card>
-      <!-- 修改这里 -->
+      <card v-if="showcard" @handle-click="showRedEnvelope"></card>
+    </div>
+    <div v-if="showred_envelope">
+      <red_envelope
+        v-for="(item, index) in redEnvelopes"
+        :key="index"
+      ></red_envelope>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import card from "./components/card.vue";
+import red_envelope from "./components/red_envelope.vue";
 
 export default {
   name: "App",
   components: {
     card,
+    red_envelope,
   },
   data() {
     return {
+      showwelcome: true,
       text: "恭喜您！抽奖成功！",
       showcard: false,
       showcard_container: false,
+      showred_envelope: false,
+      intervalId: null as number | null, // 定时器 ID
+      redEnvelopes: [] as Array<number>, // 红包数组
+      appBackground: "#ffffff", // 初始背景颜色
     };
   },
   mounted() {
     setTimeout(() => {
       this.showcard_container = true; // 3 秒后显示组件
-    }, 4500);
+    }, 3500);
     setTimeout(() => {
       this.showcard = true; // 6 秒后显示组件
-    }, 5500);
+    }, 4500);
+  },
+  beforeDestroy() {
+    // 清除定时器
+    if (this.intervalId !== null) {
+      clearInterval(this.intervalId);
+    }
+  },
+  methods: {
+    showRedEnvelope() {
+      this.redEnvelopes = []; // 清空红包数组
+      this.showred_envelope = true; // 显示红包
+      this.startAddingRedEnvelopes(); // 启动红包添加
+      this.onPageHit();
+    },
+    startAddingRedEnvelopes() {
+      // 启动定时器，每 5 秒增加一个红包
+      this.intervalId = setInterval(() => {
+        if (this.redEnvelopes.length < 10000) {
+          this.redEnvelopes.push(this.redEnvelopes.length + 1); // 添加一个红包
+        } else {
+          clearInterval(this.intervalId!);
+          this.intervalId = null; // 将 intervalId 设为 null，表示定时器已停止
+        }
+      }, 20); // 每 5 秒添加一个红包
+    },
+    onPageHit() {
+      if (this.showred_envelope === true && this.redEnvelopes.length >= 10) {
+        // 当页面被点击时清空红包
+        this.redEnvelopes = []; // 清空红包数组
+        this.showred_envelope = false; // 隐藏红包
+        this.showcard = false; // 隐藏卡片
+        this.showcard_container = false; // 隐藏卡片容器
+        this.showwelcome = false; // 显示欢迎语
+        this.appBackground =
+          "linear-gradient(to bottom, #7950f2 5%, #f783ac 95%)"; // 修改背景颜色为绿色（示例）
+        if (this.intervalId !== null) {
+          clearInterval(this.intervalId); // 停止定时器
+          this.intervalId = null; // 重置定时器 ID
+        }
+      }
+    },
   },
 };
 </script>
@@ -61,7 +115,7 @@ export default {
   border: 5px solid #ffbb00;
   width: 88%;
   padding: 10px;
-  animation: slideIn 1s ease-out forwards; /* 添加从左往右进入的动画 */
+  animation: slideIn 1s ease-out forwards; /* 从左往右进入的动画 */
   position: relative; /* 为 z-index 提供上下文 */
   z-index: 1; /* 设置 welcome 的层级 */
 }

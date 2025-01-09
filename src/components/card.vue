@@ -85,11 +85,12 @@ export default {
         "所以你一定会：",
       ], // 内容行
       important_text: ["请我吃饭！"], // 重要行
+      showGlow: false, // 添加此属性以消除警告
     };
   },
   methods: {
     handleClick() {
-      alert("Button clicked!");
+      this.$emit("handle-click"); // 发出事件给父组件
     },
   },
 };
@@ -215,6 +216,7 @@ export default {
 }
 
 .card-footer button {
+  cursor: pointer;
   padding: 8px 16px;
   font-size: 20px;
   font-weight: bold;
