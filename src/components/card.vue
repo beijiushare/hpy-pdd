@@ -50,7 +50,7 @@
         </div>
         <div class="important_image">
           <img
-            src="../img/important_image.png"
+            src="../img/important_image.webp"
             alt="Important Image"
             loading="lazy"
             :style="{
@@ -126,6 +126,7 @@ export default {
       #669900
     )
     1;
+  cursor: pointer;
   animation: card_appear 0.5s forwards, a 4s linear infinite;
 }
 
@@ -135,7 +136,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("../img/card_background.png");
+  background-image: url("../img/card_background.webp");
   background-size: cover;
   background-position: center;
   z-index: -1; /* 将背景放在内容后面 */
@@ -224,7 +225,6 @@ export default {
   color: rgb(255, 255, 255);
   border: none;
   border-radius: 5px;
-  cursor: pointer;
   transition: background 0.3s ease;
 }
 

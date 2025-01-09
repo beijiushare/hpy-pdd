@@ -20,18 +20,21 @@
         :key="index"
       ></red_envelope>
     </div>
+    <big_red_envelope v-if="showbig_red_envelope"></big_red_envelope>
   </div>
 </template>
 
 <script lang="ts">
 import card from "./components/card.vue";
 import red_envelope from "./components/red_envelope.vue";
+import big_red_envelope from "./components/big_red_envelope.vue";
 
 export default {
   name: "App",
   components: {
     card,
     red_envelope,
+    big_red_envelope,
   },
   data() {
     return {
@@ -43,6 +46,7 @@ export default {
       intervalId: null as number | null, // 定时器 ID
       redEnvelopes: [] as Array<number>, // 红包数组
       appBackground: "#ffffff", // 初始背景颜色
+      showbig_red_envelope: false,
     };
   },
   mounted() {
@@ -86,7 +90,8 @@ export default {
         this.showcard_container = false; // 隐藏卡片容器
         this.showwelcome = false; // 显示欢迎语
         this.appBackground =
-          "linear-gradient(to bottom, #7950f2 5%, #f783ac 95%)"; // 修改背景颜色为绿色（示例）
+          "linear-gradient(to bottom, #7950f2 5%, #f783ac 95%)";
+        this.showbig_red_envelope = true;
         if (this.intervalId !== null) {
           clearInterval(this.intervalId); // 停止定时器
           this.intervalId = null; // 重置定时器 ID
@@ -104,6 +109,7 @@ export default {
   display: flex;
   justify-content: center; /* 水平居中 */
   align-items: center; /* 垂直居中 */
+  cursor: pointer;
 }
 
 .welcome {
@@ -144,6 +150,10 @@ export default {
   align-items: center; /* 垂直居中 */
   z-index: 2; /* 设置 card 的层级高于 welcome */
   background: rgba(63, 63, 63, 0.322);
+}
+
+.big_red_envelope {
+  animation: appear 0.5s forwards;
 }
 
 @keyframes appear {
