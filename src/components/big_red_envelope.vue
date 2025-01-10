@@ -30,6 +30,7 @@ export default {
       setTimeout(() => {
         this.showmessage = false; // 隐藏红包
         this.showmoney = true; // 重置红包金额
+        this.$emit("Receive"); // 发出事件给父组件
       }, 1500);
     },
   },
@@ -109,18 +110,19 @@ img {
 }
 
 .circle {
-  width: 25vw; /* 宽度为视口宽度的 10% */
-  height: 25vw; /* 高度与宽度相同 */
+  width: 20vw; /* 宽度为视口宽度的 10% */
+  height: 20vw; /* 高度与宽度相同 */
   display: grid; /* 使用 Grid */
   place-items: center; /* 水平和垂直居中 */
   background-color: rgb(252, 185, 0);
+  border: rgb(230, 210, 153) 5px solid;
   border-radius: 50%;
   position: absolute;
   bottom: 7%;
 }
 
 .rotate {
-  animation: rotate linear 0.3s infinite;
+  animation: rotate linear 0.5s infinite;
 }
 
 @keyframes rotate {
@@ -134,9 +136,11 @@ img {
 
 h1 {
   font-size: 35px;
+  font-style: normal; /* 正常字体样式 */
+  transform: skew(-7deg); /* 10度倾斜 */
   text-align: center; /* 水平居中 */
   margin: 0; /* 去除默认的外边距 */
-  color: black;
+  color: rgb(168, 12, 12);
 }
 
 p3 {

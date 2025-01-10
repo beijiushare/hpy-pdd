@@ -77,7 +77,7 @@ export default {
   data() {
     return {
       lines: ["热 烈 祝 贺"], // 标题行
-      name_lines: ["黑子轩女士："], // 标题行
+      name_lines: ["亲爱的朋友："], // 标题行
       bodyLines: [
         "由于你行善积德、品行高尚",
         "这辈子福源深厚",

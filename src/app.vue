@@ -88,7 +88,7 @@ export default {
         this.showred_envelope = false; // 隐藏红包
         this.showcard = false; // 隐藏卡片
         this.showcard_container = false; // 隐藏卡片容器
-        this.showwelcome = false; // 显示欢迎语
+        this.showwelcome = false; //隐藏欢迎语
         this.appBackground =
           "linear-gradient(to bottom, #7950f2 5%, #f783ac 95%)";
         this.showbig_red_envelope = true;
