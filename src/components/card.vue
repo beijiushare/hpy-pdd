@@ -126,6 +126,8 @@ export default {
       #669900
     )
     1;
+  box-shadow: 0 0 20px rgba(255, 187, 0, 0.8),
+    /* 发光效果 */ 0 0 30px rgba(255, 187, 0, 0.5); /* 较离边框远的发光效果 */
   cursor: pointer;
   animation: card_appear 0.5s forwards, a 4s linear infinite;
 }

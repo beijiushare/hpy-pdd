@@ -20,7 +20,12 @@
         :key="index"
       ></red_envelope>
     </div>
-    <big_red_envelope v-if="showbig_red_envelope"></big_red_envelope>
+    <big_red_envelope
+      v-if="showbig_red_envelope"
+      @Receive="showfirework"
+    ></big_red_envelope>
+    <Fireworks v-if="showfirework_container"></Fireworks>
+    <begin v-if="showbegin"></begin>
   </div>
 </template>
 
@@ -28,6 +33,8 @@
 import card from "./components/card.vue";
 import red_envelope from "./components/red_envelope.vue";
 import big_red_envelope from "./components/big_red_envelope.vue";
+import Fireworks from "./components/firework.vue";
+import begin from "./components/begin.vue";
 
 export default {
   name: "App",
@@ -35,6 +42,8 @@ export default {
     card,
     red_envelope,
     big_red_envelope,
+    Fireworks,
+    begin,
   },
   data() {
     return {
@@ -43,60 +52,86 @@ export default {
       showcard: false,
       showcard_container: false,
       showred_envelope: false,
-      intervalId: null as number | null, // 定时器 ID
-      redEnvelopes: [] as Array<number>, // 红包数组
-      appBackground: "#ffffff", // 初始背景颜色
+      intervalId: null as number | null,
+      redEnvelopes: [] as Array<number>,
+      appBackground: "#ffffff",
       showbig_red_envelope: false,
+      showfirework_container: false,
+      showbegin: false,
+      audio: null as HTMLAudioElement | null, // 声音对象
     };
   },
   mounted() {
+    this.audio = new Audio("../../public/shuqian.mp3"); // 替换为实际音频文件的URL
     setTimeout(() => {
-      this.showcard_container = true; // 3 秒后显示组件
+      this.showcard_container = true;
     }, 3500);
     setTimeout(() => {
-      this.showcard = true; // 6 秒后显示组件
+      this.showcard = true;
     }, 4500);
   },
   beforeDestroy() {
-    // 清除定时器
     if (this.intervalId !== null) {
       clearInterval(this.intervalId);
     }
+    this.stopAudio(); // 清除组件时停止声音
   },
   methods: {
     showRedEnvelope() {
-      this.redEnvelopes = []; // 清空红包数组
-      this.showred_envelope = true; // 显示红包
-      this.startAddingRedEnvelopes(); // 启动红包添加
+      this.redEnvelopes = [];
+      this.showred_envelope = true;
+      this.startAddingRedEnvelopes();
+      this.playAudio(); // 播放声音
       this.onPageHit();
     },
     startAddingRedEnvelopes() {
-      // 启动定时器，每 5 秒增加一个红包
       this.intervalId = setInterval(() => {
         if (this.redEnvelopes.length < 10000) {
-          this.redEnvelopes.push(this.redEnvelopes.length + 1); // 添加一个红包
+          this.redEnvelopes.push(this.redEnvelopes.length + 1);
         } else {
           clearInterval(this.intervalId!);
-          this.intervalId = null; // 将 intervalId 设为 null，表示定时器已停止
+          this.intervalId = null;
         }
-      }, 20); // 每 5 秒添加一个红包
+      }, 20);
     },
     onPageHit() {
       if (this.showred_envelope === true && this.redEnvelopes.length >= 10) {
-        // 当页面被点击时清空红包
-        this.redEnvelopes = []; // 清空红包数组
-        this.showred_envelope = false; // 隐藏红包
-        this.showcard = false; // 隐藏卡片
-        this.showcard_container = false; // 隐藏卡片容器
-        this.showwelcome = false; //隐藏欢迎语
+        this.redEnvelopes = [];
+        this.showred_envelope = false;
+        this.showcard = false;
+        this.showcard_container = false;
+        this.showwelcome = false;
         this.appBackground =
           "linear-gradient(to bottom, #7950f2 5%, #f783ac 95%)";
         this.showbig_red_envelope = true;
+        this.stopAudio(); // 停止声音
         if (this.intervalId !== null) {
-          clearInterval(this.intervalId); // 停止定时器
-          this.intervalId = null; // 重置定时器 ID
+          clearInterval(this.intervalId);
+          this.intervalId = null;
         }
       }
+    },
+    playAudio() {
+      if (this.audio) {
+        this.audio.loop = true; // 设置为循环播放
+        this.audio.play();
+      }
+    },
+    stopAudio() {
+      if (this.audio) {
+        this.audio.pause(); // 暂停音频
+        this.audio.currentTime = 0; // 重置音频时间
+      }
+    },
+    showfirework() {
+      this.showfirework_container = true;
+      setTimeout(() => {
+        this.showbig_red_envelope = false;
+        this.showfirework_container = false;
+        setTimeout(() => {
+          this.showbegin = true; // 3.5 秒后显示组件
+        }, 500);
+      }, 6000);
     },
   },
 };
@@ -117,8 +152,10 @@ export default {
   text-align: center;
   font-weight: bold;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.572);
-  border-radius: 0px;
+  border-radius: 3px;
   border: 5px solid #ffbb00;
+  box-shadow: 0 0 20px rgba(255, 187, 0, 0.8),
+    /* 发光效果 */ 0 0 30px rgba(255, 187, 0, 0.5); /* 较离边框远的发光效果 */
   width: 88%;
   padding: 10px;
   animation: slideIn 1s ease-out forwards; /* 从左往右进入的动画 */

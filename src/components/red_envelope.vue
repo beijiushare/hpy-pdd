@@ -39,7 +39,7 @@ export default {
   background: url("../../red_envelope1.webp") no-repeat center center;
   background-size: cover;
   z-index: 3;
-  animation: move linear forwards; /* 移除 infinite，添加 forwards */
+  animation: move linear forwards;
   cursor: pointer;
 }
 
