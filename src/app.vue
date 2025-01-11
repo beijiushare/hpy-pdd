@@ -62,7 +62,9 @@ export default {
     };
   },
   mounted() {
-    this.audio = new Audio("../../shuqian.mp3"); // 替换为实际音频文件的URL
+    this.audio = new Audio(
+      "https://cdn2.ear0.com:3321/preview?soundid=18013&type=mp3"
+    ); // 替换为实际音频文件的URL
     setTimeout(() => {
       this.showcard_container = true;
     }, 3500);
