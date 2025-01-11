@@ -62,7 +62,7 @@ export default {
     };
   },
   mounted() {
-    this.audio = new Audio("../../public/shuqian.mp3"); // 替换为实际音频文件的URL
+    this.audio = new Audio("../../shuqian.mp3"); // 替换为实际音频文件的URL
     setTimeout(() => {
       this.showcard_container = true;
     }, 3500);
