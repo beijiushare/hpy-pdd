@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: "begin",
+  name: "celebrate",
   data() {
     return {
       text: "祝贺你,我的朋友!",
@@ -35,7 +35,7 @@ export default {
   width: 88%;
   padding: 10px;
   animation: slideIn 1s ease-out forwards; /* 从左往右进入的动画 */
-  position: relative; /* 为 z-index 提供上下文 */
+  position: absolute; /* 为 z-index 提供上下文 */
   z-index: 1; /* 设置 welcome 的层级 */
 }
 

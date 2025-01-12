@@ -26,6 +26,7 @@
     ></big_red_envelope>
     <Fireworks v-if="showfirework_container"></Fireworks>
     <begin v-if="showbegin"></begin>
+    <celebrate v-if="showcelebrate"></celebrate>
   </div>
 </template>
 
@@ -35,6 +36,7 @@ import red_envelope from "./components/red_envelope.vue";
 import big_red_envelope from "./components/big_red_envelope.vue";
 import Fireworks from "./components/firework.vue";
 import begin from "./components/begin.vue";
+import celebrate from "./components/celebrate.vue";
 
 export default {
   name: "App",
@@ -44,6 +46,7 @@ export default {
     big_red_envelope,
     Fireworks,
     begin,
+    celebrate,
   },
   data() {
     return {
@@ -59,12 +62,11 @@ export default {
       showfirework_container: false,
       showbegin: false,
       audio: null as HTMLAudioElement | null, // 声音对象
+      showcelebrate: false, // 庆祝(气泡)
     };
   },
   mounted() {
-    this.audio = new Audio(
-      "https://cdn2.ear0.com:3321/preview?soundid=18013&type=mp3"
-    ); // 替换为实际音频文件的URL
+    this.audio = new Audio(); // 初始化音频对象
     setTimeout(() => {
       this.showcard_container = true;
     }, 3500);
@@ -83,7 +85,9 @@ export default {
       this.redEnvelopes = [];
       this.showred_envelope = true;
       this.startAddingRedEnvelopes();
-      this.playAudio(); // 播放声音
+      this.playAudio(
+        "https://cdn2.ear0.com:3321/preview?soundid=18013&type=mp3"
+      ); // 播放红包声音
       this.onPageHit();
     },
     startAddingRedEnvelopes() {
@@ -113,8 +117,9 @@ export default {
         }
       }
     },
-    playAudio() {
+    playAudio(url: string) {
       if (this.audio) {
+        this.audio.src = url; // 设置音频源
         this.audio.loop = true; // 设置为循环播放
         this.audio.play();
       }
@@ -127,11 +132,19 @@ export default {
     },
     showfirework() {
       this.showfirework_container = true;
+      this.playAudio(
+        "https://cdn2.ear0.com:3321/preview?soundid=36261&type=mp3"
+      ); // 播放烟花声音
       setTimeout(() => {
         this.showbig_red_envelope = false;
         this.showfirework_container = false;
         setTimeout(() => {
           this.showbegin = true; // 3.5 秒后显示组件
+          this.stopAudio();
+          this.playAudio(
+            "https://m701.music.126.net/20250112125241/570bea6770a78ed8d7fcb45e6a874706/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/44303400507/757d/a55b/f939/7dacdb57452ae8a56364b9ac1aeddb31.mp3?vuutv=vjTAaINyhImiTFSXGPvKPiJUTpSReiANKe7pkozoEBfMN7OViP99JshglE71v9JwIoO6QFBYaUaNVS/DbDFBCaOoWlXpT3F7TqIE2CJ1x7UYSy0H1J5IXlItfOFW4pvaqjsTxUIwzbNUA1VTaxGhkX3GqalW7Fv+6IUcKcwJ0Pfs2NwgqrFZ3ZpIh7R20sfYGos1FSSFr/QBX2CjwydZj6FAXkgO3szNLBIaekajuN+8Wmoryxx/WK/uSlDvBCZ0m01xqZFgDBV4Fue2HfxJYTtwuZgsp7VB+jn85+VnLQUzaMO7HO/jEJHZOd954SQe1ZoogLoaUjagczf3BiXKnWrFzZbVhAmgQhX/vwA1gPfaUQ8P07cvo0+vGWFno6Jl"
+          );
+          this.showcelebrate = true;
         }, 500);
       }, 6000);
     },
