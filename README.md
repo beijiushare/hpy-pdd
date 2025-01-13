@@ -7,7 +7,7 @@
 This is a Vue.js-based New Year greeting project. Let me explain the following to you:
 
 - Sorry, my English is not good, this document uses machine translation. If you find any errors, please let me know.
-- The project uses the `MIT open source license`, which means you can use, modify, and distribute the project code at will.
+- The project uses the [MIT open source license](LICENSE), which means you can use, modify, and distribute the project code at will.
 - Due to development capability limitation and usage scenario consideration, the project only supports viewing on the `mobile terminal`, and does not consider adaptation on the `PC terminal`.
 - This is my first `Vue.js` project, first time using `TypeScript` , even first time making web animation, project management chaos (maybe not at all), rough production, please forgive me.
 - Although my initial goal was to replicate the style with pure `CSS+TS+ still images`, I soon found it rather difficult and complex. So I ended up using two gifs (`Treasure Box Open` and `Stars`), maybe I should learn `Animate with AE` or find a `Design Partner`[Cover Face🤦😵‍💫], I heard [`lottie`](https://gw.alipayobjects.com/mdn/rms_04f0aa/afts/img/A$>ZPyTSLUvGEsAAABjARQnAQ) is pretty good.
