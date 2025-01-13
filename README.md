@@ -1,6 +1,6 @@
 # hpy-pdd
 
-[English](README.md) | [中文](README_zh.md)
+[English](README.md) | [中文](README_ZH.md)
 
 This template should help get you started developing with Vue 3 in Vite.
 
