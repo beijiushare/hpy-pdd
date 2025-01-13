@@ -46,7 +46,11 @@ Then deploy the contents of the `dist` folder to the server.
 ## Use the following network resources
 
 - Code: After opening the red envelope, the effect of fireworks directly uses the content of a [blog](https://blog.csdn.net/wrz2018/article/details/135275742), and some changes have been made. For the time being, I don't know whether the code can be used, so I will delete this part of the code in subsequent versions and rewrite it myself.
+- picture
+  - Snake drawing from drawable
+  - gif animation [from aigei](https://www.aigei.com/)
 - sound effect
   - `Money counting machine` From [earing.com](https://www.ear0.com/)
   - `Fireworks` from [ear0.com](https://www.ear0.com/)
 - Music: Hamili - Lunary (Vlog No Copyright Music) Label: Vlog No Copyright Music Address: www.youtube.com/watch?v=pUUxWCmW7xg
+- Font: from [ZeoSeven™ Fonts](https://fonts.zeoseven.com/)

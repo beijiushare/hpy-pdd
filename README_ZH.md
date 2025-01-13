@@ -57,8 +57,12 @@ npm run build
 ## 采用了以下网络资源
 
 - 代码:打开红包后绽放烟花的效果直接使用了一篇[博客](https://blog.csdn.net/wrz2018/article/details/135275742)的内容,并进行了部分更改,暂时不知道该代码是否可以使用,故将在后续版本中删除该部分代码,自己重写.
+- 图片
+  - 蛇图 来自可画
+  - gif 动图 [来自爱给网](https://www.aigei.com/)
 - 音效
   - `数钞机` 来自[耳聆网](https://www.ear0.com/)
   - `烟花` 来自[耳聆网](https://www.ear0.com/)
 - 音乐：Hamili - Lunary (Vlog No Copyright Music) 厂牌：Vlog No Copyright Music
   地址：https://www.youtube.com/watch?v=pUUxWCmW7xg
+- 字体：来自[ZeoSeven™ Fonts](https://fonts.zeoseven.com/)
