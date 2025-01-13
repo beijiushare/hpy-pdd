@@ -51,7 +51,7 @@ export default {
   data() {
     return {
       showwelcome: true,
-      text: "恭喜您！抽奖成功！",
+      text: "快来领压岁钱啰！",
       showcard: false,
       showcard_container: false,
       showred_envelope: false,
@@ -142,11 +142,13 @@ export default {
           this.showbegin = true; // 3.5 秒后显示组件
           this.stopAudio();
           this.playAudio(
-            "https://m701.music.126.net/20250112125241/570bea6770a78ed8d7fcb45e6a874706/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/44303400507/757d/a55b/f939/7dacdb57452ae8a56364b9ac1aeddb31.mp3?vuutv=vjTAaINyhImiTFSXGPvKPiJUTpSReiANKe7pkozoEBfMN7OViP99JshglE71v9JwIoO6QFBYaUaNVS/DbDFBCaOoWlXpT3F7TqIE2CJ1x7UYSy0H1J5IXlItfOFW4pvaqjsTxUIwzbNUA1VTaxGhkX3GqalW7Fv+6IUcKcwJ0Pfs2NwgqrFZ3ZpIh7R20sfYGos1FSSFr/QBX2CjwydZj6FAXkgO3szNLBIaekajuN+8Wmoryxx/WK/uSlDvBCZ0m01xqZFgDBV4Fue2HfxJYTtwuZgsp7VB+jn85+VnLQUzaMO7HO/jEJHZOd954SQe1ZoogLoaUjagczf3BiXKnWrFzZbVhAmgQhX/vwA1gPfaUQ8P07cvo0+vGWFno6Jl"
+            "https://cdn2.ear0.com:3321/preview?soundid=42468&type=mp3"
           );
-          this.showcelebrate = true;
+          setTimeout(() => {
+            this.showcelebrate = true;
+          }, 2500);
         }, 500);
-      }, 6000);
+      }, 5000);
     },
   },
 };
@@ -181,7 +183,8 @@ export default {
 .welcome h1 {
   color: white;
   font-size: 35px;
-  font-weight: bold;
+
+  font-family: "Mengshen-Handwritten";
 }
 
 .welcome h1 span {
@@ -234,3 +237,7 @@ export default {
   }
 }
 </style>
+
+<!-- 音乐：Hamili - Lunary (Vlog No Copyright Music) 厂牌：Vlog No Copyright Music
+地址：https://www.youtube.com/watch?v=pUUxWCmW7xg
+ -->

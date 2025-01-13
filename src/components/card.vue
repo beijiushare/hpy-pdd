@@ -65,7 +65,7 @@
         </div>
       </div>
       <div class="card-footer">
-        <button @click="handleClick">领取礼物</button>
+        <button @click="handleClick">领取红包</button>
       </div>
     </div>
   </div>
@@ -76,15 +76,15 @@ export default {
   name: "card",
   data() {
     return {
-      lines: ["热 烈 祝 贺"], // 标题行
+      lines: ["蛇 年 大 吉"], // 标题行
       name_lines: ["亲爱的朋友："], // 标题行
       bodyLines: [
-        "由于你行善积德、品行高尚",
-        "这辈子福源深厚",
+        "龙年既往，蛇岁方来。",
+        "值此蛇年伊始之际",
         // "你以后的生活一定会：",
-        "所以你一定会：",
+        "谨奉贺词：",
       ], // 内容行
-      important_text: ["请我吃饭！"], // 重要行
+      important_text: ["新年快乐！"], // 重要行
       showGlow: false, // 添加此属性以消除警告
     };
   },
@@ -130,6 +130,7 @@ export default {
     /* 发光效果 */ 0 0 30px rgba(255, 187, 0, 0.5); /* 较离边框远的发光效果 */
   cursor: pointer;
   animation: card_appear 0.5s forwards, a 4s linear infinite;
+  font-family: "Source Han Serif SC VF";
 }
 
 .card-background {
