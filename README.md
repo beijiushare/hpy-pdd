@@ -2,6 +2,9 @@
 
 [English](README.md) | [中文](README_ZH.md)
 
+[Github 仓库地址](https://github.com/beijiushare/hpy-pdd)
+[Gitee 仓库地址](https://gitee.com/beijiushare/hpy-pdd)
+
 ## Introduction
 
 This is a Vue.js-based New Year greeting project. Let me explain the following to you:

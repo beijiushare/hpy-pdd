@@ -2,6 +2,9 @@
 
 [中文](README_ZH.md) | [English](README.md)
 
+[Github 仓库地址](https://github.com/beijiushare/hpy-pdd)
+[Gitee 仓库地址](https://gitee.com/beijiushare/hpy-pdd)
+
 ## 介绍
 
 这是一款基于 Vue.js 的拼多多风格新年祝福项目。向您说明以下几点：
