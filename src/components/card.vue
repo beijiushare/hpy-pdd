@@ -65,7 +65,7 @@
         </div>
       </div>
       <div class="card-footer">
-        <button @click="handleClick">领取红包</button>
+        <button @click="handleClick">领取祝福卡</button>
       </div>
     </div>
   </div>
@@ -76,7 +76,7 @@ export default {
   name: "card",
   data() {
     return {
-      lines: ["蛇 年 大 吉"], // 标题行
+      lines: ["新 年 快 乐"], // 标题行
       name_lines: ["亲爱的朋友："], // 标题行
       bodyLines: [
         "龙年既往，蛇岁方来。",
@@ -84,7 +84,7 @@ export default {
         // "你以后的生活一定会：",
         "谨奉贺词：",
       ], // 内容行
-      important_text: ["新年快乐！"], // 重要行
+      important_text: ["蛇年大吉！"], // 重要行
       showGlow: false, // 添加此属性以消除警告
     };
   },

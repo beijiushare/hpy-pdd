@@ -1,6 +1,6 @@
 <template>
   <div class="big_red_envelope">
-    <p1>北酒的红包</p1>
+    <p1>北酒的祝福</p1>
     <p2 v-if="showmessage">新年快乐&nbsp;&nbsp;金蛇贺岁</p2>
     <div class="img1" v-if="showmessage"></div>
     <div class="wrapper" id="wrap">
@@ -9,7 +9,7 @@
     <div class="circle" @click="Receive($event)" v-if="showmessage">
       <h1>開</h1>
     </div>
-    <p3 v-if="showmoney">恭喜你抢到{{ money }}元红包</p3>
+    <p3 v-if="showmoney">祝您{{ money }}</p3>
     <div class="img2" v-if="showbox"></div>
   </div>
 </template>
@@ -22,16 +22,28 @@ export default {
       showmessage: true,
       showmoney: false,
       showbox: false,
-      money: 100000000,
+      // 定义一个数组，包含可能的红包金额
+      moneyOptions: [
+        "身体健康,万事如意",
+        "平安喜乐,笑口常开",
+        "心想事成,吉祥如意",
+        "永远年轻,永远快乐",
+        "岁岁平安 ,吉庆有余",
+      ],
+      money: "", // 初始金额为空
     };
   },
   methods: {
     Receive(event) {
       event.currentTarget.classList.toggle("rotate"); // 切换.rotate类
 
+      // 随机选择一个金额
+      this.money =
+        this.moneyOptions[Math.floor(Math.random() * this.moneyOptions.length)];
+
       setTimeout(() => {
         this.showmessage = false; // 隐藏红包
-        this.showmoney = true; // 重置红包金额
+        this.showmoney = true; // 显示红包金额
         this.showbox = true; // 显示红包盒子
         this.$emit("Receive"); // 发出事件给父组件
       }, 1500);

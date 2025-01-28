@@ -35,7 +35,7 @@ export default {
   name: "begin",
   data() {
     return {
-      text: "祝福你,我的朋友!",
+      text: "祝您新年快乐!",
     };
   },
 };
